@@ -6,8 +6,8 @@
 
 function drawPie(container, data, parameters={}) {
     // Select the default parameters or select from provided parameters
-    const indexCol = parameters['indexCol'] || "index"
-    const valueCol = parameters['valueCol'] || "value"
+    const indexCol = parameters['indexCol'] || parameters['xCol'] || "index"
+    const valueCol = parameters['valueCol'] || parameters['yCol'] ||"value"
     const innerRadiusPercent = parameters["innerRadiusPercent"] || 0  // percentage of the pie cutout for donut, in range 0 to 1
     const colours = parameters['colours'] || d3.schemeCategory10
 
