@@ -26,8 +26,8 @@ function drawHBar(container, data, parameters={}) {
     update()
   
     // Add axes
-    chart.drawAxisXTop()
-    chart.drawAxisYLeft() 
+    chart.drawAxisXTop(xScale)
+    chart.drawAxisYLeft(yScale) 
     chart.drawTitleTop(titleTop + "all")
 
     function update() {
@@ -41,7 +41,7 @@ function drawHBar(container, data, parameters={}) {
         chart.append(barSelection, "rect")
             .attr("x",        function(d) { return chart.paddingLeft })
             .attr("y",        function(d) { return yScale(d["key"]) })
-            .style("fill",    chart.colourMap("key") )
+            .style("fill",    chart.colourMap("key",colourScale) )
             .style("opacity", 1)
             .attr("height",   yScale.bandwidth())
             .transition()

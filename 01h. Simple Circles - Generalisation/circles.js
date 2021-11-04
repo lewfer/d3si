@@ -36,8 +36,8 @@ function drawCircles(container, data, parameters={}) {
         .style("opacity",   0.7)
 
     // Add axes
-    chart.drawAxisXBottom(xCol)
-    chart.drawAxisYLeft(yCol)         
+    chart.drawAxisXBottom(xScale, xCol)
+    chart.drawAxisYLeft(yScale, yCol)         
 }
 
 

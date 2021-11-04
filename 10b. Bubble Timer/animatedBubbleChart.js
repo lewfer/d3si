@@ -73,8 +73,8 @@ function drawAnimatedBubbleChart(container, data, parameters={}) {
     }
 
     // Add axes
-    chart.drawAxisXBottom(xCol, 10)
-    chart.drawAxisYLeft(yCol, 10) 
+    chart.drawAxisXBottom(xScale, xCol, 10)
+    chart.drawAxisYLeft(yScale, yCol, 10) 
 
     // Draw the chart for the first time
     update()

@@ -28,13 +28,13 @@ function drawCircles(container, data, parameters={}) {
     var selection = chart.bind("circles") 
 
     // Add the svg elements to the chart, one for each item in the selection
-    chart.circlesxy(selection, xCol, yCol, bubbleSizeCol)
-        .style("fill",    chart.colourMap(xCol))
+    chart.circlesxy(selection, xCol, yCol, bubbleSizeCol, xScale, yScale)
+        .style("fill",    chart.colourMap(xCol,colourScale))
         .style("opacity", 0.7)          
 
     // Add axes
-    chart.drawAxisXBottom()
-    chart.drawAxisYLeft()         
+    chart.drawAxisXBottom(xScale)
+    chart.drawAxisYLeft(yScale)         
 }
 
 

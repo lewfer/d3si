@@ -22,11 +22,11 @@ function drawBar(container, data, parameters={}) {
     var barSelection = chart.bind('rect')
 
     // Add the bars to the chart
-    chart.bars(barSelection, xCol, yCol)
-        .style("fill", chart.colourMap(xCol))
+    chart.bars(barSelection, xCol, yCol, xScale, yScale)
+        .style("fill", chart.colourMap(xCol,colourScale))
         .style("opacity", 1)
         
     // Add axes
-    chart.drawAxisXBottom(xCol)
-    chart.drawAxisYLeft(yCol) 
+    chart.drawAxisXBottom(xScale, xCol)
+    chart.drawAxisYLeft(yScale, yCol) 
 }

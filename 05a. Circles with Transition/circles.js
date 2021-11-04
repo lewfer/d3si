@@ -23,14 +23,14 @@ function drawCircles(container, data, parameters={}) {
 
     // Add the circles to the chart    
     chart.append(circles, "circle")
-        .attr("cx", function (d, i) {return xScale(d[xCol])})
+        .attr("cx", function (d, i) {return xOffset+xScale(d[xCol])})
         .attr("cy", chart.height / 2)
         .attr("r", function (d) {return d[bubbleSizeCol1]})
         .style("fill", "#1f77b4")
         .style("opacity", 0.7)
 
     // Add axes
-    chart.drawAxisXBottom(xScale, data.length)
+    chart.drawAxisXBottom(xScale, undefined, data.length)
 
     // On click, update with new data			
 	d3.select("button")

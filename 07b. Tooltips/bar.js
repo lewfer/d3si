@@ -23,7 +23,7 @@ function drawBar(container, data, parameters={}) {
     var barSelection = chart.bind('rect')
 
     // Add the bars to the chart
-    barSelection = chart.bars(barSelection, xCol, yCol)
+    barSelection = chart.bars(barSelection, xCol, yCol, xScale, yScale)
         .style("fill",    function(d) { return colourScale(d[xCol]) })
         .style("opacity", 1)
 
@@ -31,8 +31,8 @@ function drawBar(container, data, parameters={}) {
     barSelection = chart.addStandardTooltip(barSelection, getTooltipData)   
               
     // Add axes
-    chart.drawAxisXBottom(xCol)
-    chart.drawAxisYLeft(yCol) 
+    chart.drawAxisXBottom(xScale, xCol)
+    chart.drawAxisYLeft(yScale, yCol) 
 }
 
 

@@ -22,11 +22,11 @@ function drawHBar(container, data, parameters={}) {
     var barSelection = chart.bind('rect')
 
     // Add the bars to the chart
-    chart.hbars(barSelection, xCol, yCol)
-        .style("fill",    chart.colourMap(yCol) )
+    chart.hbars(barSelection, xCol, yCol, xScale, yScale)
+        .style("fill",    chart.colourMap(yCol,colourScale) )
         .style("opacity", 1)
         
     // Add axes
-    chart.drawAxisXTop(xCol)
-    chart.drawAxisYLeft(yCol) 
+    chart.drawAxisXTop(xScale, xCol)
+    chart.drawAxisYLeft(yScale, yCol) 
 }

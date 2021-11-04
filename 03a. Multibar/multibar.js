@@ -18,11 +18,13 @@ function drawMultiBar(container, data, parameters={}) {
 
     // Process the data into series groupings
     var indexData = chart.groupDataByIndex(xCol)
+    var minGroupValue = chart.groupMin(indexData)
+    var maxGroupValue = chart.groupMax(indexData)
 
     console.log(indexData)
     // Create our scales to map data to screen position and colours
     var xIndexScale = chart.xScaleBand(xCol) 
-    var yScale = chart.yScaleLinearMinMax(0, chart.maxSeriesValue) 
+    var yScale = chart.yScaleLinearMinMax(0, maxGroupValue) 
     var xSeriesScale = chart.xSeriesScaleBand(seriesCols, xIndexScale)  // scale to position each series
     var colourScale = chart.colourScaleOrdinal(seriesCols, colours)     // scale to colour each series
 
@@ -37,11 +39,11 @@ function drawMultiBar(container, data, parameters={}) {
     var bars = chart.bindSelection(groupEls, 'rect', valueMap("values"))
 
     // Add the bar elements to the chart, one bar for each series
-    chart.seriesBars(bars)
-        .style("fill", chart.colourMap("series"))
+    chart.seriesBars(bars, xSeriesScale, yScale)
+        .style("fill", chart.colourMap("series",colourScale))
         .style("opacity", 0.7)
 
     // Add axes
-    chart.drawAxisXBottom(xCol)
-    chart.drawAxisYLeft(valueName)     
+    chart.drawAxisXBottom(xIndexScale, xCol)
+    chart.drawAxisYLeft(yScale, valueName)     
 }

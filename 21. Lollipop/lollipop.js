@@ -41,13 +41,13 @@ function drawLollipop(container, data, parameters={}) {
             .attr("cx", function(d) { return xScale(d[xCol]); }) 
             .attr("cy", function(d) { return yScale(d[yCol]); })
             .attr("r", "7")
-            .style("fill", chart.colourMap(yCol))
+            .style("fill", chart.colourMap(yCol,colourScale))
             .attr("stroke", stroke)
             .attr("stroke-width", strokeWidth)
 
     // Add axes
-    chart.drawAxisXBottom(xCol)
-    chart.drawAxisYLeft(yCol)
+    chart.drawAxisXBottom(xScale, xCol)
+    chart.drawAxisYLeft(yScale, yCol)
 }
 
 

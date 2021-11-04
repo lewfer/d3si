@@ -18,16 +18,16 @@ function drawLine(container, data, parameters={}) {
     var yScale = chart.yScaleLinear(yCol) 
 
     // Define the line
-    var linepoints = chart.getLineGenerator(xCol, yCol)
+    var linepoints = chart.getLineGenerator(xCol, yCol, xScale, yScale)
 
     // Get an object representing all the lines in the chart
     lineSelection = chart.bindDatum("path")
 
     // Draw the data points as a single line
-    chart.line(lineSelection, linepoints)
+    chart.line(lineSelection, linepoints, xScale)
         .style("stroke", colour)
 
     // Add axes
-    chart.drawAxisXBottom(xCol)
-    chart.drawAxisYLeft(yCol) 
+    chart.drawAxisXBottom(xScale, xCol)
+    chart.drawAxisYLeft(yScale, yCol) 
 }

@@ -105,7 +105,7 @@ function drawForceTransitionsChart(container, data, parameters={}) {
         .on("click", function() {
             var xScale = chart.xScaleLinear(xCol)
             chart.removeAxes()
-            chart.drawAxisXBottom(xCol)
+            chart.drawAxisXBottom(xScale, xCol)
 
             force = chart.forceSimulation(nodesSelection)
             chart.addForceX(function(d) {return xScale(d[xCol])})
@@ -120,7 +120,7 @@ function drawForceTransitionsChart(container, data, parameters={}) {
         .on("click", function() {     
             var yScale = chart.yScaleLinear(yCol)       
             chart.removeAxes()
-            chart.drawAxisYLeft(yCol)  
+            chart.drawAxisYLeft(yScale, yCol)  
 
             force = chart.forceSimulation(nodesSelection)
             chart.addForceY(function(d) {return yScale(d[yCol])})
@@ -136,7 +136,7 @@ function drawForceTransitionsChart(container, data, parameters={}) {
             var xScale = chart.xScaleBand(xGroupCol)
             xOffset = xScale.bandwidth()/2
             chart.removeAxes()
-            chart.drawAxisXBottom(xGroupCol)
+            chart.drawAxisXBottom(xScale, xGroupCol)
             
             force = chart.forceSimulation(nodesSelection)
             chart.addForceX(function(d) {return xScale(d[xGroupCol])+xOffset})
@@ -152,7 +152,7 @@ function drawForceTransitionsChart(container, data, parameters={}) {
             var yScale = chart.yScaleBand(yGroupCol)   
             yOffset = yScale.bandwidth()/2
             chart.removeAxes()
-            chart.drawAxisYLeft(yGroupCol)  
+            chart.drawAxisYLeft(yScale, yGroupCol)  
 
             force = chart.forceSimulation(nodesSelection)
             chart.addForceX(chart.drawingCentreY)         

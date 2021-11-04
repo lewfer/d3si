@@ -16,23 +16,25 @@ function drawLine(container, data, parameters={}) {
 
     // Process the data into series groupings
     var seriesData = chart.groupDataBySeries(xCol)
+    var minGroupValue = chart.groupMin(seriesData)
+    var maxGroupValue = chart.groupMax(seriesData)
 
     // Create our scales to map data to screen position and colours
     var xScale = chart.xScaleBand(xCol) 
-    var yScale = chart.yScaleLinearMinMax(chart.minSeriesValue, chart.maxSeriesValue) 
+    var yScale = chart.yScaleLinearMinMax(minGroupValue, maxGroupValue) 
     var colourScale = chart.colourScaleOrdinal(seriesCols, colours)   // scale to colour each series
     
     // Get an object representing all the lines in the chart
     lines = chart.bind(".series", seriesData)
 
     // Generator for the svg points for the line
-    var linepoints = chart.getLineGenerator("index", "value")
+    var linepoints = chart.getLineGenerator("index", "value", xScale, yScale)
 
     // Add the lines to the chart, one line for each series
-    chart.seriesLines(lines, linepoints)
-        .style("stroke", chart.colourMap("series")) //function(d) { return colourScale(d.series) })
+    chart.seriesLines(lines, linepoints, xScale)
+        .style("stroke", chart.colourMap("series",colourScale)) //function(d) { return colourScale(d.series) })
 
     // Add axes
-    chart.drawAxisXBottom(xCol)
-    chart.drawAxisYLeft(valueName)    
+    chart.drawAxisXBottom(xScale, xCol)
+    chart.drawAxisYLeft(yScale, valueName)    
 }

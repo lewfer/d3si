@@ -25,8 +25,8 @@ function drawBar(container, data, parameters={}) {
     update()
 
     // Add axes
-    chart.drawAxisXBottom()
-    chart.drawAxisYLeft() 
+    chart.drawAxisXBottom(xScale)
+    chart.drawAxisYLeft(yScale) 
     chart.drawTitleTop(titleTop + "all")
 
     function update() {
@@ -36,8 +36,8 @@ function drawBar(container, data, parameters={}) {
         var bars = chart.bind('rect')
 
         // Add the bars to the chart
-        chart.bars(bars, "key", "value")
-        .style("fill", chart.colourMap('key'))
+        chart.bars(bars, "key", "value", xScale, yScale)
+        .style("fill", chart.colourMap('key',colourScale))
         .style("opacity", 1)
 
         // Remove old bars from the chart

@@ -22,7 +22,7 @@ function drawCircles(container, data, parameters={}) {
     update()
 
     // Add axes
-    chart.drawAxisXBottom()
+    chart.drawAxisXBottom(xScale)
 
     // Function to update the display
     function update() {

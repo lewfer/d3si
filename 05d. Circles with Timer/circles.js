@@ -21,7 +21,7 @@ function drawCircles(container, data, parameters={}) {
     update()
 
     // Add axes
-    chart.drawAxisXBottom()
+    let xAxis = chart.drawAxisXBottom(xScale)
 
     // Set a timer event to trigger every 2 seconds
     var timer = setInterval(animate, 2000) 
@@ -61,6 +61,6 @@ function drawCircles(container, data, parameters={}) {
         update()
 
         // Update axis
-        chart.updateXAxis()
+        chart.updateXAxis(xAxis, xScale)
     }    
 }

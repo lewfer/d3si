@@ -45,8 +45,8 @@ function drawBubble(container, data, parameters={}) {
         .on('mouseout',   function (d) { chart.tooltipHide(this, tooltipStyleHide) })  
 
     // Add axes
-    chart.drawAxisXBottom(xCol, 10)
-    chart.drawAxisYLeft(yCol, 10) 
+    chart.drawAxisXBottom(xScale, xCol, 10)
+    chart.drawAxisYLeft(yScale, yCol, 10) 
 
     function tooltipStyleShow(el) {
         d3.select(el)

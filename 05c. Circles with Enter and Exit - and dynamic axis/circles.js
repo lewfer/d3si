@@ -22,7 +22,7 @@ function drawCircles(container, data, parameters={}) {
     update()
 
     // Add axes
-    chart.drawAxisXBottom()
+    var xAxis = chart.drawAxisXBottom(xScale)
 
     function update() {
         // Load and process the data
@@ -62,7 +62,7 @@ function drawCircles(container, data, parameters={}) {
             update()
 
             // Update axis
-            chart.updateXAxis()
+            chart.updateXAxis(xAxis, xScale)
         })
 
     //On click, update with removed data			
@@ -76,6 +76,6 @@ function drawCircles(container, data, parameters={}) {
             update()
 
             // Update axis
-            chart.updateXAxis()
+            chart.updateXAxis(xAxis, xScale)
     })
 }

@@ -38,8 +38,8 @@ function drawHeatmap(container, data, parameters={}) {
     // Get an object representing all the circles in the chart
     var rects = chart.bind("rect", data) 
 
-    chart.fillxy(rects, xCol, yCol)
-        .style("fill", chart.colourMap(valueCol))
+    chart.fillxy(rects, xCol, yCol, xScale, yScale)
+        .style("fill", chart.colourMap(valueCol,colourScale))
         .style("opacity", 0.7)
         // Add the event handlers for the tooltip
         .on('mouseover',  function (d) { chart.tooltipShow(this, tooltipStyleShow) })
@@ -60,8 +60,8 @@ function drawHeatmap(container, data, parameters={}) {
     }
     
     // Add axes
-    chart.drawAxisXBottom()
-    chart.drawAxisYLeft()         
+    chart.drawAxisXBottom(xScale)
+    chart.drawAxisYLeft(yScale)         
 }
 
 

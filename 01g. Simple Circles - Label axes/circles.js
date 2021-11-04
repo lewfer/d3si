@@ -30,8 +30,8 @@ function drawCircles(container, data, parameters={}) {
         .style("opacity",   0.7) 
 
     // Add axes
-    chart.drawAxisXBottom("Player")
-    chart.drawAxisYLeft("Age")         
+    chart.drawAxisXBottom(xScale, "Player")
+    chart.drawAxisYLeft(yScale, "Age")         
 }
 
 

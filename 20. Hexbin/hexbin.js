@@ -54,8 +54,8 @@ function drawHexbin(container, data, parameters={}) {
         .attr("stroke-width", strokeWidth)    
 
     // Add axes
-    chart.drawAxisXBottom(xCol,5)
-    chart.drawAxisYLeft(yCol, 5) 
+    chart.drawAxisXBottom(xScale, xCol,5)
+    chart.drawAxisYLeft(yScale, yCol, 5) 
 }
 
 
