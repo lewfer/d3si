@@ -11,17 +11,17 @@ function drawLine(container, data, parameters={}) {
     const colour = parameters['colour'] || "#f02035"
 
     // Create our D3 Simple object
-    var chart = new D3SI(container, data, parameters)
+    let chart = new D3SI(container, data, parameters)
 
     // Create our scales to map data to screen position
-    var xScale = chart.xScaleBand(xCol) 
-    var yScale = chart.yScaleLinear(yCol) 
+    let xScale = chart.xScaleBand(xCol) 
+    let yScale = chart.yScaleLinear(yCol) 
 
     // Define the line
-    var linepoints = chart.getLineGenerator(xCol, yCol, xScale, yScale)
+    let linepoints = chart.getLineGenerator(xCol, yCol, xScale, yScale)
 
     // Get an object representing all the lines in the chart
-    lineSelection = chart.bindDatum("path")
+    let lineSelection = chart.bindDatum("path")
 
     // Draw the data points as a single line
     chart.line(lineSelection, linepoints, xScale)

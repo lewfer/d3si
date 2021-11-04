@@ -14,12 +14,12 @@ function drawLollipop(container, data, parameters={}) {
     const strokeWidth = parameters['strokeWidth'] || 3
 
     // Create our D3 Simple object
-    var chart = new D3SI(container, data, parameters)
+    let chart = new D3SI(container, data, parameters)
 
     // Create our scales to map data to screen position and colours
-    var xScale = chart.xScaleLinear(xCol)
-    var yScale = chart.yScaleBand(yCol).padding(1)
-    var colourScale = chart.colourScaleOrdinal(yCol, colours) 
+    let xScale = chart.xScaleLinear(xCol)
+    let yScale = chart.yScaleBand(yCol).padding(1)
+    let colourScale = chart.colourScaleOrdinal(yCol, colours) 
 
     // Lines
     chart.svg.selectAll("myline")

@@ -10,16 +10,16 @@ function drawCircles(container, data, parameters={}) {
     const bubbleSizeCol2 = parameters['bubbleSizeCol2']
 
     // Create our D3 Simple object
-    var chart = new D3SI(container, data, parameters)
+    let chart = new D3SI(container, data, parameters)
     
     // Create our scales to map data to screen position and colours
-    var xScale = chart.xScaleBand(xCol)                         // scale from indices to x screen position
+    let xScale = chart.xScaleBand(xCol)                         // scale from indices to x screen position
 
     // Compute an offset so our data and xaxis align
-    var xOffset = xScale.bandwidth()/2
+    let xOffset = xScale.bandwidth()/2
 
     // Get an object representing all the circles in the chart
-    var circles = chart.bind("circle", data)  
+    let circles = chart.bind("circle", data)  
 
     // Add the circles to the chart    
     chart.append(circles, "circle")
@@ -36,7 +36,7 @@ function drawCircles(container, data, parameters={}) {
 	d3.select("button")
         .on("click", function() {
             // Get an object representing all the circles in the chart
-            var circles = chart.bind("circle", data)  
+            let circles = chart.bind("circle", data)  
         
             // Change the radius according to the new value
             circles

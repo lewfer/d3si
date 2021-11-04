@@ -19,15 +19,15 @@ function drawForce(container, data, parameters={}) {
     const bubbleSizeMax = parameters['bubbleSizeMax'] || 50
 
     // Create our D3 Simple object
-    var chart = new D3SI(container, data, parameters)
+    let chart = new D3SI(container, data, parameters)
 
     // Set scales for colour and size of bubbles
-    var colourScale = chart.colourScaleOrdinal(colourCol, colours) 
-    var rScale = chart.scaleCircleRadius(bubbleSizeCol, bubbleSizeMin, bubbleSizeMax)
+    let colourScale = chart.colourScaleOrdinal(colourCol, colours) 
+    let rScale = chart.scaleCircleRadius(bubbleSizeCol, bubbleSizeMin, bubbleSizeMax)
 
     // Add circles to the chart, one for each item in data
     // We won't set the position cx, cy.  The force layout will do this for us
-    nodesSelection = chart.bind("circle", data) 
+    let nodesSelection = chart.bind("circle", data) 
     nodesSelection = chart.append(nodesSelection, "circle")
         .attr("class", "node")
         .attr("r", function (d) { return rScale(d[bubbleSizeCol])})
@@ -37,7 +37,7 @@ function drawForce(container, data, parameters={}) {
         .style("stroke-width", 1)  
 
     // Define the forces to be applied to the nodes 
-    var force = chart.forceSimulation(nodesSelection)
+    let force = chart.forceSimulation(nodesSelection)
     chart.addForceCentre()
     chart.addForceCharge(chargeStrength)
     chart.addForceCollide(collisionStrength, function(d){ return (rScale(d[bubbleSizeCol])) })

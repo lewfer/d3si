@@ -20,17 +20,17 @@ function drawForceTransitionsChart(container, data, parameters={}) {
     getTooltipData = parameters['getTooltipData']
 
     // Create our D3 Simple object
-    var chart = new D3SI(container, data, parameters)
+    let chart = new D3SI(container, data, parameters)
 
     // Create a tooltip
     chart.tooltipCreate()
 
     // Set scales for colour and size of bubbles
-    var colourScale = chart.colourScaleOrdinal(colourCol, colours) 
-    var rScale = chart.scaleCircleRadius(bubbleSizeCol, bubbleSizeMin, bubbleSizeMax)
+    let colourScale = chart.colourScaleOrdinal(colourCol, colours) 
+    let rScale = chart.scaleCircleRadius(bubbleSizeCol, bubbleSizeMin, bubbleSizeMax)
 
     // This will be the object representing the circles in the chart
-    var nodesSelection = undefined
+    let nodesSelection = undefined
 
     // Add circles to the chart, one for each item in data
     // We won't set the position cx, cy.  The force layout will do this for us
@@ -53,7 +53,7 @@ function drawForceTransitionsChart(container, data, parameters={}) {
             .on("end", dragended))
 
     // Define the forces to be applied to the nodes 
-    var force = chart.forceSimulation(nodesSelection)
+    let force = chart.forceSimulation(nodesSelection)
     chart.addForceCentre()
     chart.addForceCharge(chargeStrength)
     chart.addForceCollide(collisionStrength, function(d){ return (rScale(d[bubbleSizeCol])) })
@@ -93,7 +93,7 @@ function drawForceTransitionsChart(container, data, parameters={}) {
         .on("click", function() {    
             chart.removeAxes()
 
-            force = chart.forceSimulation(nodesSelection)
+            let force = chart.forceSimulation(nodesSelection)
             chart.addForceCentre()
             chart.addForceCharge(chargeStrength)
             chart.addForceCollide(collisionStrength, function(d){ return (rScale(d[bubbleSizeCol])) })
@@ -103,11 +103,11 @@ function drawForceTransitionsChart(container, data, parameters={}) {
 
     d3.select("#xLinearButton")   
         .on("click", function() {
-            var xScale = chart.xScaleLinear(xCol)
+            let xScale = chart.xScaleLinear(xCol)
             chart.removeAxes()
             chart.drawAxisXBottom(xScale, xCol)
 
-            force = chart.forceSimulation(nodesSelection)
+            let force = chart.forceSimulation(nodesSelection)
             chart.addForceX(function(d) {return xScale(d[xCol])})
             chart.addForceY(chart.drawingCentreY)            
             chart.addForceCharge(chargeStrength)
@@ -118,11 +118,11 @@ function drawForceTransitionsChart(container, data, parameters={}) {
 
     d3.select("#yLinearButton")   
         .on("click", function() {     
-            var yScale = chart.yScaleLinear(yCol)       
+            let yScale = chart.yScaleLinear(yCol)       
             chart.removeAxes()
             chart.drawAxisYLeft(yScale, yCol)  
 
-            force = chart.forceSimulation(nodesSelection)
+            let force = chart.forceSimulation(nodesSelection)
             chart.addForceY(function(d) {return yScale(d[yCol])})
             chart.addForceX(chart.drawingCentreX)            
             chart.addForceCharge(chargeStrength)
@@ -133,12 +133,12 @@ function drawForceTransitionsChart(container, data, parameters={}) {
 
     d3.select("#xGroupButton")   
         .on("click", function() {
-            var xScale = chart.xScaleBand(xGroupCol)
-            xOffset = xScale.bandwidth()/2
+            let xScale = chart.xScaleBand(xGroupCol)
+            let xOffset = xScale.bandwidth()/2
             chart.removeAxes()
             chart.drawAxisXBottom(xScale, xGroupCol)
             
-            force = chart.forceSimulation(nodesSelection)
+            let force = chart.forceSimulation(nodesSelection)
             chart.addForceX(function(d) {return xScale(d[xGroupCol])+xOffset})
             chart.addForceY(chart.drawingCentreX)            
             chart.addForceCharge(chargeStrength)
@@ -149,12 +149,12 @@ function drawForceTransitionsChart(container, data, parameters={}) {
 
     d3.select("#yGroupButton")   
         .on("click", function() {    
-            var yScale = chart.yScaleBand(yGroupCol)   
-            yOffset = yScale.bandwidth()/2
+            let yScale = chart.yScaleBand(yGroupCol)   
+            let yOffset = yScale.bandwidth()/2
             chart.removeAxes()
             chart.drawAxisYLeft(yScale, yGroupCol)  
 
-            force = chart.forceSimulation(nodesSelection)
+            let force = chart.forceSimulation(nodesSelection)
             chart.addForceX(chart.drawingCentreY)         
             chart.addForceY(function(d) {return yScale(d[yGroupCol])+yOffset})
             chart.addForceCharge(chargeStrength)

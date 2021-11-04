@@ -13,7 +13,7 @@ function drawCircles(container, data, parameters={}) {
     parent = document.getElementById("chartsvg")
     function drawCircles(data) {
         for (i=0; i<data.length; i++) {
-            var el = document.createElementNS('http://www.w3.org/2000/svg','circle');
+            let el = document.createElementNS('http://www.w3.org/2000/svg','circle');
             el.setAttribute("cx",data[i].value)
             el.setAttribute("cy",20 + 100*i)
             el.setAttribute("r",20)
@@ -24,7 +24,7 @@ function drawCircles(container, data, parameters={}) {
     */
 
     // Add the svg element, in which we will draw the chart
-    var parent = container.append("svg")
+    let parent = container.append("svg")
         .attr('width', 800)
         .attr('height', 800)     
 

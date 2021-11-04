@@ -33,7 +33,7 @@
         convertNumbers(data)
 
         // Setup parameters for the chart
-        var chartParams = {}
+        let chartParams = {}
         chartParams["title"] = "GDP Per Capita vs Life Exp"
         chartParams["width"] = 1000
         chartParams["height"] = 800
@@ -55,7 +55,7 @@
         drawAnimatedBubbleChart("#chart", data, chartParams)  
 
         // Draw the legend
-        var legendParams = {}
+        let legendParams = {}
         legendParams["title"] = "Region"
         legendParams["x"] = 500
         legendParams["y"] = 500
@@ -65,8 +65,8 @@
       // Function to extract the data we want to show in the tooltip
       function getTooltipData(d) {
         // Formatting: http://koaning.s3-website-us-west-2.amazonaws.com/html/d3format.html
-          var formatPercent = d3.format(".0%");
-          var formatComma = d3.format(",.0f");
+        let formatPercent = d3.format(".0%");
+        let formatComma = d3.format(",.0f");
           return {
               tt1 : d["CountryName"],
               tt2: "GDP: " + d3.format(",.2f")(d["GDP per capita"]),

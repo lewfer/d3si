@@ -14,29 +14,29 @@ function drawHexbin(container, data, parameters={}) {
     const strokeWidth = parameters['strokeWidth'] || 0.1
 
     // Create our D3 Simple object
-    var chart = new D3SI(container, data, parameters)
+    let chart = new D3SI(container, data, parameters)
 
     // Create our scales to map data to screen position and colours
-    var xScale = chart.xScaleLinear(xCol)
-    var yScale = chart.yScaleLinear(yCol) 
+    let xScale = chart.xScaleLinear(xCol)
+    let yScale = chart.yScaleLinear(yCol) 
 
     // Reformat the data: d3.hexbin() needs a specific format
-    var inputForHexbinFun = []
+    let inputForHexbinFun = []
     data.forEach(function(d) {
         inputForHexbinFun.push( [xScale(d[xCol]), yScale(d[yCol])] ) 
     })
 
     // Create a function to compute the hexbins
-    var hexbin = d3.hexbin()
+    let hexbin = d3.hexbin()
         .radius(15) // size of the bin in px
         .extent([ [0, 0], [chart.drawingWidth, chart.drawingWidth] ])
 
     // Get the hexbins with the counts (length)
-    hexData = hexbin(inputForHexbinFun)
+    let hexData = hexbin(inputForHexbinFun)
 
     // Get the max length and use it to create a colour scale
     let maxCount = getMaxValue(hexData, 'length')
-    var colourScale = chart.colourScaleSequential([0,maxCount], colours)
+    let colourScale = chart.colourScaleSequential([0,maxCount], colours)
 
     // Don't draw outside of the chart drawing area
     chart.clipDrawingArea()

@@ -15,17 +15,17 @@ function drawCircles(container, data, parameters={}) {
     const bubbleSizeCol = parameters['bubbleSizeCol'] || data.columns[2]    // get the column containing the bubble size, defaulting to the third column if the parameter is not passed in
 
     // Create our chart object
-    var chart = new D3SI(container, data, parameters)
+    let chart = new D3SI(container, data, parameters)
 
     // Create our scales to map data values to screen position 
-    var xScale = chart.xScaleBand(xCol)                                     // use the parameter to defined the scale
-    var yScale = chart.yScaleLinear(yCol)                                   // use the parameter to defined the scale
+    let xScale = chart.xScaleBand(xCol)                                     // use the parameter to defined the scale
+    let yScale = chart.yScaleLinear(yCol)                                   // use the parameter to defined the scale
 
     // Compute an offset so our data and xaxis align
-    xOffset = xScale.bandwidth()/2
+    let xOffset = xScale.bandwidth()/2
 
     // Get a selection object representing all the circles we want in the chart, one for each item in the data
-    var circleSelection = chart.bind("circle") 
+    let circleSelection = chart.bind("circle") 
 
     // Add the circles svg elements to the chart, one for each item in the selection
     chart.append(circleSelection, "circle")

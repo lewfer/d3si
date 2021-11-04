@@ -9,13 +9,13 @@ function drawCircles(container, data, parameters={}) {
     const valueCol = parameters['valueCol'] || "value"
 
     // Take just the first 5 data items
-    var dataCount = 5
-    var currentData = data.slice(0,dataCount)
+    let dataCount = 5
+    let currentData = data.slice(0,dataCount)
 
     // Create our D3 Simple object
-    var chart = new D3SI(container, currentData, parameters)
+    let chart = new D3SI(container, currentData, parameters)
 
-    var xScale = undefined
+    let xScale = undefined
 
     // Call the update the first time we draw the chart
     update()
@@ -24,7 +24,7 @@ function drawCircles(container, data, parameters={}) {
     let xAxis = chart.drawAxisXBottom(xScale)
 
     // Set a timer event to trigger every 2 seconds
-    var timer = setInterval(animate, 2000) 
+    let timer = setInterval(animate, 2000) 
     
     // Function to update the display
     function update() {
@@ -35,7 +35,7 @@ function drawCircles(container, data, parameters={}) {
         xScale = chart.xScaleLinear(xCol)    
 
         // Get an object representing all the circles in the chart
-        var circles = chart.bind("circle") 
+        let circles = chart.bind("circle") 
 
         // Add the new circles to the chart
         chart.append(circles, "circle")

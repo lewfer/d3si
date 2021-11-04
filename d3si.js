@@ -41,7 +41,7 @@ function loadParseCsv(file, parseFn, fn) {
  */
 function convertNumbers(data) {
     data.forEach(function(d) {
-        for (var key in d) {
+        for (let key in d) {
           if (+d[key]===+d[key]) {
             d[key] = +d[key]
           }
@@ -130,9 +130,9 @@ function rollup(data, groupByCol, rollupCol) {
     Alternative approach
     // https://animateddata.co.uk/articles/crossfilter/
     // https://github.com/square/crossfilter/wiki/API-Reference
-    var cf = crossfilter(data)
+    let cf = crossfilter(data)
     console.log(cf.size())
-    var nationalityDimension = cf.dimension(function(d) {return d.nationality})
+    let nationalityDimension = cf.dimension(function(d) {return d.nationality})
     console.log(nationalityDimension.top(3))
     console.log(nationalityDimension.group().reduceSum(function(d) { return d.score }).all())
     */

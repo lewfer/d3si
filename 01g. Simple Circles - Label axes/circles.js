@@ -9,17 +9,17 @@
 
 function drawCircles(container, data, parameters={}) {
     // Create our chart object
-    var chart = new D3SI(container, data, parameters)
+    let chart = new D3SI(container, data, parameters)
 
     // Create our scales to map data values to screen position 
-    var xScale = chart.xScaleBand("player")
-    var yScale = chart.yScaleLinear("age")
+    let xScale = chart.xScaleBand("player")
+    let yScale = chart.yScaleLinear("age")
 
     // Compute an offset so our data and xaxis align
-    xOffset = xScale.bandwidth()/2
+    let xOffset = xScale.bandwidth()/2
 
     // Get a selection object representing all the circles we want in the chart, one for each item in the data
-    var circleSelection = chart.bind("circle") 
+    let circleSelection = chart.bind("circle") 
 
     // Add the circles svg elements to the chart, one for each item in the selection
     chart.append(circleSelection, "circle")

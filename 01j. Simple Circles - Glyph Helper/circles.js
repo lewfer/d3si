@@ -17,15 +17,15 @@ function drawCircles(container, data, parameters={}) {
     const colours = parameters['colours'] || d3.schemeCategory10
 
     // Create our chart object
-    var chart = new D3SI(container, data, parameters)
+    let chart = new D3SI(container, data, parameters)
 
     // Create our scales to map data values to screen position 
-    var xScale = chart.xScaleBand(xCol)
-    var yScale = chart.yScaleLinear(yCol)
-    var colourScale = chart.colourScaleOrdinal(xCol, colours) 
+    let xScale = chart.xScaleBand(xCol)
+    let yScale = chart.yScaleLinear(yCol)
+    let colourScale = chart.colourScaleOrdinal(xCol, colours) 
 
     // Get a selection object representing all the circles we want in the chart, one for each item in the data
-    var selection = chart.bind("circles") 
+    let selection = chart.bind("circles") 
 
     // Add the svg elements to the chart, one for each item in the selection
     chart.circlesxy(selection, xCol, yCol, bubbleSizeCol, xScale, yScale)

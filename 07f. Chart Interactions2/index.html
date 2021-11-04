@@ -32,12 +32,12 @@
           convertNumbers(data)
             
           // Create the redraw event
-          var dispatch = d3.dispatch('redraw')
+          let dispatch = d3.dispatch('redraw')
                    
           // Setup parameters for the chart
           byYear = rollup(data, "year", "score")                // Rollup the score by year
-          var pieChartEl = d3.select("#pieChart")              // Find the HTML element into which we will create the charts
-          var pieChartParams = {}          
+          let pieChartEl = d3.select("#pieChart")              // Find the HTML element into which we will create the charts
+          let pieChartParams = {}          
           pieChartParams["width"] = 300   
           pieChartParams["height"] = 300
           pieChartParams["indexCol"] = "key"
@@ -47,8 +47,8 @@
           drawPie(pieChartEl, byYear, pieChartParams) 
 
           // Set up the linked chart parameters
-          var barChartEl = d3.select("#barChart")                // Find the HTML element into which we will create the charts
-          var barChartParams = {}    
+          let barChartEl = d3.select("#barChart")                // Find the HTML element into which we will create the charts
+          let barChartParams = {}    
           barChartParams["width"] = 400   
           barChartParams["height"] = 400
           barChartParams["xCol"] = "player"
@@ -59,8 +59,8 @@
           drawBar(barChartEl, data, barChartParams) 
 
           // Setup parameters for the chart
-          var hbarChartEl = d3.select("#hbarChart")
-          var hbarChartParams = {}
+          let hbarChartEl = d3.select("#hbarChart")
+          let hbarChartParams = {}
           hbarChartParams["width"] = 400   
           hbarChartParams["height"] = 400
           hbarChartParams["yCol"] = "nationality"

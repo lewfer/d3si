@@ -27,7 +27,7 @@
   <!--Script to draw the charts-->
   <script>
     // Setup parameters for the chart
-    var chartParams = {}
+    let chartParams = {}
     chartParams["xCol"] = "key"
     chartParams["yCol"] = "value"
 
@@ -50,7 +50,7 @@
         d = rollup(data, "year", "score")
 
         // Create the redraw event
-        var dispatch = d3.dispatch('redraw')
+        let dispatch = d3.dispatch('redraw')
 
         chartParams["consistentNames"] = consistentNames
         chartParams["dispatch"] = dispatch
@@ -68,7 +68,7 @@
             valuesDatafiltered.columns = data.columns
 
             // Set up the linked chart parameters
-            var chartParams = {}
+            let chartParams = {}
             chartParams["xCol"] = "player"
             chartParams["yCol"] = "score"
             chartParams["consistentNames"] = consistentNames

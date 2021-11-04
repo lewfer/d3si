@@ -17,20 +17,20 @@ function drawAnimatedBubbleChart(container, data, parameters={}) {
     const interval = parameters['interval'] || 1000                 // animation frame interval in milliseconds
 
     // Get data range across all data so we can set fixed axes that won't change over the animation
-    minX = getMinValue(data, xCol)
-    maxX = getMaxValue(data, xCol)
-    minY = getMinValue(data, yCol)
-    maxY = getMaxValue(data, yCol)
+    let minX = getMinValue(data, xCol)
+    let maxX = getMaxValue(data, xCol)
+    let minY = getMinValue(data, yCol)
+    let maxY = getMaxValue(data, yCol)
 
     // Get the range of values we need to animate over
-    var animateValue = getMinValue(data, animateCol)
-    var animateValueMax = getMaxValue(data, animateCol)
+    let animateValue = getMinValue(data, animateCol)
+    let animateValueMax = getMaxValue(data, animateCol)
 
     // Filter data to just that required by the first frame of the animation
-    var filteredData = filterByValue(data, animateCol, animateValue) 
+    let filteredData = filterByValue(data, animateCol, animateValue) 
 
     // Create our chart object
-    var chart = new D3SI(container, data, parameters) 
+    let chart = new D3SI(container, data, parameters) 
 
     // Create the tooltip
     chart.tooltipCreate()
@@ -39,10 +39,10 @@ function drawAnimatedBubbleChart(container, data, parameters={}) {
     chart.drawTitleTop(title + " " + animateValue)
 
     // Create our scales to map data values to screen position 
-    var xScale = chart.xScaleLinearMinMax(0,maxX)
-    var yScale = chart.yScaleLinearMinMax(0, maxY)
-    var rScale = chart.scaleCircleRadius(bubbleSizeCol, 2, 50)
-    var colourScale = chart.consistentColourScale(colourColNames, colours) 
+    let xScale = chart.xScaleLinearMinMax(0,maxX)
+    let yScale = chart.yScaleLinearMinMax(0, maxY)
+    let rScale = chart.scaleCircleRadius(bubbleSizeCol, 2, 50)
+    let colourScale = chart.consistentColourScale(colourColNames, colours) 
 
     // Define a function to draw or update the circles
     function update() {
@@ -50,7 +50,7 @@ function drawAnimatedBubbleChart(container, data, parameters={}) {
         chart.reloadData(filteredData)
 
         // Get an object representing all the circles in the chart
-        var circles = chart.bind("circle", filteredData) 
+        let circles = chart.bind("circle", filteredData) 
 
         // Add the circles to the chart
         chart.append(circles, "circle")
@@ -97,7 +97,7 @@ function drawAnimatedBubbleChart(container, data, parameters={}) {
     }  
 
     // Set a timer event to trigger every interval milliseconds
-    var timer = setInterval(animate, interval) 
+    let timer = setInterval(animate, interval) 
 
     function tooltipStyleShow(el) {
         d3.select(el)

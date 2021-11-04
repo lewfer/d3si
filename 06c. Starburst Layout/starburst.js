@@ -14,29 +14,29 @@ function drawStarburstChart(container, data, parameters={}) {
     const colours = parameters['colours'] || d3.schemeCategory10
 
     // Create our D3 Simple object and set 0,0 to the centre of the drawing area
-    var chart = new D3SI(container, data, parameters)
+    let chart = new D3SI(container, data, parameters)
     chart.moveOriginToCentre()
 
     // Build a hierarchy from the data
-    root = chart.buildHierarchy(nameCol, parentCol, valueCol) 
+    let root = chart.buildHierarchy(nameCol, parentCol, valueCol) 
 
     // Add partition information to the data.  Each node gets attributes x0, y0, x1, y1, representing left, top, right, bottom of rectangle
     chart.addPartitionLayout(root, 2 * Math.PI, chart.drawingRadius)
 
     // Create a colour scale based on the top level nodes
-    topLevelIds = chart.hierarchyTopLevelIds(root)
-    colourScale = chart.consistentColourScale(topLevelIds, colours)
+    let topLevelIds = chart.hierarchyTopLevelIds(root)
+    let colourScale = chart.consistentColourScale(topLevelIds, colours)
 
     // The arc generator will turn x0, y0, x1, y1 into path coordinates to make an arc
-    var arcGenerator = chart.getPartitionArcGenerator()  
+    let arcGenerator = chart.getPartitionArcGenerator()  
 
     console.log(root)
 
     // Flatten the hierarchy into a ordered list of all nodes, removing the first node, which is the root
-    flattenedNodes = root.descendants().slice(1)
+    let flattenedNodes = root.descendants().slice(1)
 
     // Get an object representing all the arcs in the chart
-    arcSelection = chart.bind("path", flattenedNodes)  
+    let arcSelection = chart.bind("path", flattenedNodes)  
 
     // Add the segments to the chart
     chart.append(arcSelection, "path")
@@ -45,14 +45,14 @@ function drawStarburstChart(container, data, parameters={}) {
         .style("fill", function (d) { while (d.depth > 1) d = d.parent; return colourScale(d.id) }) // colour according to top level parent
 
     // Centre text in the segment
-    g = chart.svg.append("g")
+    let g = chart.svg.append("g")
         .attr("text-anchor", "middle")
 
     // The arc label generator will turn x0, y0, x1, y1 into the transformation coordinates to make the arc labels
-    var labelGenerator = chart.getPartitionArcLabelGenerator()
+    let labelGenerator = chart.getPartitionArcLabelGenerator()
 
     // Get an object representing all the text labels in the chart
-    labelSelection = chart.bindSelection(g, "text", flattenedNodes)  
+    let labelSelection = chart.bindSelection(g, "text", flattenedNodes)  
     
     // Add the labels to the chart
     chart.append(labelSelection, "text")

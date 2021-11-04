@@ -13,15 +13,15 @@ function drawHBar(container, data, parameters={}) {
     const dispatch = parameters['dispatch'] 
     const titleTop = parameters['titleTop']
 
-    var filteredData = rollup(data, yCol, xCol)      
+    let filteredData = rollup(data, yCol, xCol)      
 
     // Create our D3 Simple object
-    var chart = new D3SI(container, filteredData, parameters)
+    let chart = new D3SI(container, filteredData, parameters)
 
     // Create our scales to map data to screen position and colours
-    var xScale = chart.xScaleLinear("value") 
-    var yScale = chart.yScaleBand("key") 
-    var colourScale = chart.colourScaleOrdinal("key", colours) 
+    let xScale = chart.xScaleLinear("value") 
+    let yScale = chart.yScaleBand("key") 
+    let colourScale = chart.colourScaleOrdinal("key", colours) 
 
     update()
   
@@ -34,10 +34,10 @@ function drawHBar(container, data, parameters={}) {
         chart.reloadData(filteredData)
 
         // Get a selection object representing all the bars we want in the chart
-        var barSelection = chart.bind('rect')    
+        let barSelection = chart.bind('rect')    
 
         // Add the bars to the chart
-        var minx = 0
+        let minx = 0
         chart.append(barSelection, "rect")
             .attr("x",        function(d) { return chart.paddingLeft })
             .attr("y",        function(d) { return yScale(d["key"]) })

@@ -12,23 +12,23 @@ function drawLine(container, data, parameters={}) {
     const valueName  = parameters['valueName']
 
     // Create our D3 Simple object 
-    var chart = new D3SI(container, data, parameters)
+    let chart = new D3SI(container, data, parameters)
 
     // Process the data into series groupings
-    var seriesData = chart.groupDataBySeries(xCol)
-    var minGroupValue = chart.groupMin(seriesData)
-    var maxGroupValue = chart.groupMax(seriesData)
+    let seriesData = chart.groupDataBySeries(xCol)
+    let minGroupValue = chart.groupMin(seriesData)
+    let maxGroupValue = chart.groupMax(seriesData)
 
     // Create our scales to map data to screen position and colours
-    var xScale = chart.xScaleBand(xCol) 
-    var yScale = chart.yScaleLinearMinMax(minGroupValue, maxGroupValue) 
-    var colourScale = chart.colourScaleOrdinal(seriesCols, colours)   // scale to colour each series
+    let xScale = chart.xScaleBand(xCol) 
+    let yScale = chart.yScaleLinearMinMax(minGroupValue, maxGroupValue) 
+    let colourScale = chart.colourScaleOrdinal(seriesCols, colours)   // scale to colour each series
     
     // Get an object representing all the lines in the chart
-    lines = chart.bind(".series", seriesData)
+    let lines = chart.bind(".series", seriesData)
 
     // Generator for the svg points for the line
-    var linepoints = chart.getLineGenerator("index", "value", xScale, yScale)
+    let linepoints = chart.getLineGenerator("index", "value", xScale, yScale)
 
     // Add the lines to the chart, one line for each series
     chart.seriesLines(lines, linepoints, xScale)

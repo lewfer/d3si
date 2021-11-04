@@ -12,22 +12,22 @@ function drawPie(container, data, parameters={}) {
     const colours = parameters['colours'] || d3.schemeCategory10
 
     // Create our D3 Simple object
-    var chart = new D3SI(container, data, parameters)
+    let chart = new D3SI(container, data, parameters)
 
     // Create our scales to map data to screen position and colours
-    var colourScale = chart.colourScaleOrdinal(indexCol, colours)      // scale to colour each index
+    let colourScale = chart.colourScaleOrdinal(indexCol, colours)      // scale to colour each index
 
     // Generate the required pie angles to be fed to the arc generator
-    var pieData = chart.addPieLayout(valueCol)    
+    let pieData = chart.addPieLayout(valueCol)    
 
     // Arc generator generates the paths 
-    var arcGenerator = chart.getPieArcGenerator(innerRadiusPercent)
+    let arcGenerator = chart.getPieArcGenerator(innerRadiusPercent)
 
     // Add the pie group element, shifted to the centre of the pie
     chart.moveOriginToCentre()
 
     // Get an object representing all the segments in the chart
-    var segmentSelection = chart.bind("circle", pieData)
+    let segmentSelection = chart.bind("circle", pieData)
 
     // Add the segments to the chart
     chart.append(segmentSelection, "path")

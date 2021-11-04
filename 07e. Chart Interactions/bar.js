@@ -14,15 +14,15 @@ function drawBar(container, data, parameters={}) {
     const consistentNames = parameters['consistentNames']
 
     // Create our D3 Simple object
-    var chart = new D3SI(container, data, parameters)
+    let chart = new D3SI(container, data, parameters)
 
     // Create our scales to map data to screen position and colours
-    var xScale = chart.xScaleBand(xCol) 
-    var yScale = chart.yScaleLinear(yCol) 
-    var colourScale = chart.consistentColourScale(consistentNames, colours) 
+    let xScale = chart.xScaleBand(xCol) 
+    let yScale = chart.yScaleLinear(yCol) 
+    let colourScale = chart.consistentColourScale(consistentNames, colours) 
 
     // Get an object representing all the circles in the chart
-    var bars = chart.bind('rect')
+    let bars = chart.bind('rect')
 
     // Add the bars to the chart
     chart.bars(bars, xCol, yCol, xScale, yScale)

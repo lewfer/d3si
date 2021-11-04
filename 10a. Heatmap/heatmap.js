@@ -16,27 +16,27 @@ function drawHeatmap(container, data, parameters={}) {
     getTooltipData = parameters['getTooltipData']
 
     // Create our chart object
-    var chart = new D3SI(container, data, parameters)
+    let chart = new D3SI(container, data, parameters)
 
     // Load and process the data
     //chart.loadData(data)
     //chart.setIndex(xCol)
 
     // Create the SVG element in which we will draw the chart
-    //var svg = chart.createSvg()
+    //let svg = chart.createSvg()
 
     chart.tooltipCreate()
 
     // Create our scales to map data values to screen position 
-    var xScale = chart.xScaleBand(xCol)
-    var yScale = chart.yScaleBand(yCol)
-    var colourScale = chart.colourScaleLinear(valueCol, minColour, maxColour) 
+    let xScale = chart.xScaleBand(xCol)
+    let yScale = chart.yScaleBand(yCol)
+    let colourScale = chart.colourScaleLinear(valueCol, minColour, maxColour) 
 
     // Compute an offset so our data and xaxis align
-    xOffset = xScale.bandwidth()/2
+    let xOffset = xScale.bandwidth()/2
 
     // Get an object representing all the circles in the chart
-    var rects = chart.bind("rect", data) 
+    let rects = chart.bind("rect", data) 
 
     chart.fillxy(rects, xCol, yCol, xScale, yScale)
         .style("fill", chart.colourMap(valueCol,colourScale))

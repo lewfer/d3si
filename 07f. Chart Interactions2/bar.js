@@ -12,15 +12,15 @@ function drawBar(container, data, parameters={}) {
     const dispatch = parameters['dispatch'] 
     const titleTop = parameters['titleTop']
 
-    var filteredData = rollup(data, xCol, yCol)
+    let filteredData = rollup(data, xCol, yCol)
 
     // Create our D3 Simple object
-    var chart = new D3SI(container, filteredData, parameters)
+    let chart = new D3SI(container, filteredData, parameters)
 
     // Create our scales to map data to screen position and colours
-    var xScale = chart.xScaleBand("key") 
-    var yScale = chart.yScaleLinear("value") 
-    var colourScale = chart.colourScaleOrdinal('key', colours) 
+    let xScale = chart.xScaleBand("key") 
+    let yScale = chart.yScaleLinear("value") 
+    let colourScale = chart.colourScaleOrdinal('key', colours) 
 
     update()
 
@@ -33,7 +33,7 @@ function drawBar(container, data, parameters={}) {
         chart.reloadData(filteredData)
 
         // Get an object representing all the circles in the chart
-        var bars = chart.bind('rect')
+        let bars = chart.bind('rect')
 
         // Add the bars to the chart
         chart.bars(bars, "key", "value", xScale, yScale)

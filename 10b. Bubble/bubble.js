@@ -16,20 +16,20 @@ function drawBubble(container, data, parameters={}) {
     const colours = parameters['colours'] || d3.schemeCategory10
 
     // Create our chart object
-    var chart = new D3SI(container, data, parameters)
+    let chart = new D3SI(container, data, parameters)
 
     chart.drawTitleTop(title)
 
     chart.tooltipCreate()
 
     // Create our scales to map data values to screen position 
-    var xScale = chart.xScaleLinear(xCol)
-    var yScale = chart.yScaleLinear(yCol)
-    var rScale = chart.scaleCircleRadius(bubbleSizeCol, 2, 20)
-    var colourScale = chart.colourScaleOrdinal(colourCol, colours) 
+    let xScale = chart.xScaleLinear(xCol)
+    let yScale = chart.yScaleLinear(yCol)
+    let rScale = chart.scaleCircleRadius(bubbleSizeCol, 2, 20)
+    let colourScale = chart.colourScaleOrdinal(colourCol, colours) 
 
     // Get an object representing all the circles in the chart
-    var circles = chart.bind("circle", data) 
+    let circles = chart.bind("circle", data) 
 
     // Add the circles to the chart
     chart.append(circles, "circle")

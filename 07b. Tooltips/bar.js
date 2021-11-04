@@ -12,15 +12,15 @@ function drawBar(container, data, parameters={}) {
     //getTooltipData = parameters['getTooltipData']
 
     // Create our D3 Simple object
-    var chart = new D3SI(container, data, parameters)
+    let chart = new D3SI(container, data, parameters)
 
     // Create our scales to map data to screen position and colours
-    var xScale = chart.xScaleBand(xCol) 
-    var yScale = chart.yScaleLinear(yCol) 
-    var colourScale = chart.colourScaleOrdinal(xCol, colours) 
+    let xScale = chart.xScaleBand(xCol) 
+    let yScale = chart.yScaleLinear(yCol) 
+    let colourScale = chart.colourScaleOrdinal(xCol, colours) 
 
     // Get an object representing all the circles in the chart
-    var barSelection = chart.bind('rect')
+    let barSelection = chart.bind('rect')
 
     // Add the bars to the chart
     barSelection = chart.bars(barSelection, xCol, yCol, xScale, yScale)

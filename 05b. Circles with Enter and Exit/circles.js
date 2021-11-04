@@ -9,14 +9,14 @@ function drawCircles(container, data, parameters={}) {
     const valueCol = parameters['valueCol'] || "value"
 
     // Take just the first 5 data items
-    var dataCount = 5
-    var currentData = data.slice(0,dataCount)
+    let dataCount = 5
+    let currentData = data.slice(0,dataCount)
 
     // Create our D3 Simple object
-    var chart = new D3SI(container, currentData, parameters)
+    let chart = new D3SI(container, currentData, parameters)
 
     // Create our scales to map data to screen position and colours
-    xScale = chart.xScaleLinear(xCol)    
+    let xScale = chart.xScaleLinear(xCol)    
 
     // Call the update the first time we draw the chart
     update()
@@ -30,7 +30,7 @@ function drawCircles(container, data, parameters={}) {
         chart.reloadData(currentData)
 
         // Get an object representing all the circles in the chart
-        var circles = chart.bind("circle") 
+        let circles = chart.bind("circle") 
 
         // Add the new circles to the chart
         chart.append(circles, "circle")

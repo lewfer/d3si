@@ -5,10 +5,10 @@
 
 function drawCircles(container, data, parameters={}) {
     // Create our chart object
-    var chart = new D3SI(container, data, parameters)
+    let chart = new D3SI(container, data, parameters)
 
     // Get a selection object representing all the circles we want in the chart, one for each item in the data
-    var circleSelection = chart.bind("circle")
+    let circleSelection = chart.bind("circle")
 
     // Add the circles svg elements to the chart, one for each item in the selection
     chart.append(circleSelection, "circle")
